@@ -1,0 +1,392 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 121634816 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:3006), pid=6730, tid=6732
+#
+# JRE version:  (11.0.15) (build )
+# Java VM: OpenJDK 64-Bit Server VM (11.0.15+0-b2043.56-8887301, mixed mode, sharing, tiered, compressed oops, g1 gc, linux-amd64)
+# Core dump will be written. Default location: Core dumps may be processed with "/lib/systemd/systemd-coredump %P %u %g %s %t 9223372036854775808 %e" (or dumping to /home/qennedy/HarryPotterApp/core.6730)
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: org.jetbrains.kotlin.cli.jvm.K2JVMCompiler @/home/qennedy/HarryPotterApp/app/build/20230405_1393568616903330038.compiler.options
+
+Host: Intel(R) Core(TM) i7-6600U CPU @ 2.60GHz, 4 cores, 7G, Linux Mint 19.3 Tricia
+Time: Wed Apr  5 14:06:32 2023 EAT elapsed time: 0.013861 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f61f0028800):  JavaThread "Unknown thread" [_thread_in_vm, id=6732, stack(0x00007f61f779c000,0x00007f61f789d000)]
+
+Stack: [0x00007f61f779c000,0x00007f61f789d000],  sp=0x00007f61f789b240,  free space=1020k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xf176be]  VMError::report_and_die(int, char const*, char const*, __va_list_tag*, Thread*, unsigned char*, void*, void*, char const*, int, unsigned long)+0x80e
+V  [libjvm.so+0xf17cca]  VMError::report_and_die(Thread*, char const*, int, unsigned long, VMErrorType, char const*, __va_list_tag*)+0x3a
+V  [libjvm.so+0x89778a]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*, ...)+0xba
+V  [libjvm.so+0xd63963]  os::Linux::commit_memory_impl(char*, unsigned long, bool)+0xe3
+V  [libjvm.so+0xd63af7]  os::pd_commit_memory_or_exit(char*, unsigned long, unsigned long, bool, char const*)+0x27
+V  [libjvm.so+0xd5bc38]  os::commit_memory_or_exit(char*, unsigned long, unsigned long, bool, char const*)+0x18
+V  [libjvm.so+0x974a35]  G1PageBasedVirtualSpace::commit_internal(unsigned long, unsigned long)+0x195
+V  [libjvm.so+0x974caf]  G1PageBasedVirtualSpace::commit(unsigned long, unsigned long)+0x14f
+V  [libjvm.so+0x97ac52]  G1RegionsLargerThanCommitSizeMapper::commit_regions(unsigned int, unsigned long, WorkGang*)+0x42
+V  [libjvm.so+0x9e6138]  HeapRegionManager::commit_regions(unsigned int, unsigned long, WorkGang*)+0xb8
+V  [libjvm.so+0x9e63e5]  HeapRegionManager::make_regions_available(unsigned int, unsigned int, WorkGang*)+0x65
+V  [libjvm.so+0x9e68d1]  HeapRegionManager::expand_at(unsigned int, unsigned int, WorkGang*)+0x111
+V  [libjvm.so+0x93e411]  G1CollectedHeap::expand(unsigned long, WorkGang*, double*)+0xd1
+V  [libjvm.so+0x94286e]  G1CollectedHeap::initialize()+0xa6e
+V  [libjvm.so+0xedf382]  Universe::initialize_heap()+0x32
+V  [libjvm.so+0xedf0ba]  universe_init()+0x3a
+V  [libjvm.so+0x9fcc02]  init_globals()+0x52
+V  [libjvm.so+0xeb816f]  Threads::create_vm(JavaVMInitArgs*, bool*)+0x3af
+V  [libjvm.so+0xa8e537]  JNI_CreateJavaVM+0x57
+C  [libjli.so+0x10a73]  JavaMain+0x123
+C  [libjli.so+0x13c29]  ThreadJavaMain+0x9
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x0000000000a47f10, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x00007f61f0040800 GCTaskThread "GC Thread#0" [stack: 0x00007f61f4cef000,0x00007f61f4def000] [id=6733]
+  0x00007f61f006f000 ConcurrentGCThread "G1 Main Marker" [stack: 0x00007f61f40b3000,0x00007f61f41b3000] [id=6734]
+  0x00007f61f0071000 ConcurrentGCThread "G1 Conc#0" [stack: 0x00007f61dd057000,0x00007f61dd157000] [id=6735]
+
+[error occurred during error reporting (printing all threads), id 0xb, SIGSEGV (0xb) at pc=0x00007f61f670714a]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007f61f0025240] Heap_lock - owner thread: 0x00007f61f0028800
+
+Heap address: 0x000000008ca00000, size: 1846 MB, Compressed Oops mode: Non-zero based: 0x000000008ca00000
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (2 events):
+Event: 0.002 Protecting memory [0x00007f61f779c000,0x00007f61f77a0000] with protection modes 0
+Event: 0.002 Loaded shared library /home/qennedy/studio/android-studio/jbr/lib/libzip.so
+
+
+Dynamic libraries:
+00200000-00201000 r--p 00000000 08:02 8790464                            /home/qennedy/studio/android-studio/jbr/bin/java
+00201000-00202000 r-xp 00000000 08:02 8790464                            /home/qennedy/studio/android-studio/jbr/bin/java
+00202000-00203000 r--p 00000000 08:02 8790464                            /home/qennedy/studio/android-studio/jbr/bin/java
+00203000-00204000 rw-p 00000000 08:02 8790464                            /home/qennedy/studio/android-studio/jbr/bin/java
+00a44000-00a65000 rw-p 00000000 00:00 0                                  [heap]
+93e00000-100000000 ---p 00000000 00:00 0 
+7f61c8000000-7f61c8021000 rw-p 00000000 00:00 0 
+7f61c8021000-7f61cc000000 ---p 00000000 00:00 0 
+7f61ce000000-7f61d0000000 rw-p 00000000 00:00 0 
+7f61d0000000-7f61d0021000 rw-p 00000000 00:00 0 
+7f61d0021000-7f61d4000000 ---p 00000000 00:00 0 
+7f61d4650000-7f61d8000000 ---p 00000000 00:00 0 
+7f61d8000000-7f61d8021000 rw-p 00000000 00:00 0 
+7f61d8021000-7f61dc000000 ---p 00000000 00:00 0 
+7f61dc8c8000-7f61dd055000 rw-p 00000000 00:00 0 
+7f61dd055000-7f61dd056000 ---p 00000000 00:00 0 
+7f61dd056000-7f61dd157000 rw-p 00000000 00:00 0 
+7f61dd157000-7f61dd4f2000 ---p 00000000 00:00 0 
+7f61dd4f2000-7f61dd762000 rwxp 00000000 00:00 0 
+7f61dd762000-7f61dda82000 ---p 00000000 00:00 0 
+7f61dda82000-7f61ddcf2000 rwxp 00000000 00:00 0 
+7f61ddcf2000-7f61e4fba000 ---p 00000000 00:00 0 
+7f61e4fba000-7f61e522a000 rwxp 00000000 00:00 0 
+7f61e522a000-7f61ec4f2000 ---p 00000000 00:00 0 
+7f61ec4f2000-7f61f0000000 r--s 00000000 08:02 7607514                    /home/qennedy/studio/android-studio/jbr/lib/modules
+7f61f0000000-7f61f008f000 rw-p 00000000 00:00 0 
+7f61f008f000-7f61f4000000 ---p 00000000 00:00 0 
+7f61f40b1000-7f61f40b2000 ---p 00000000 00:00 0 
+7f61f40b2000-7f61f41b3000 rw-p 00000000 00:00 0 
+7f61f41b3000-7f61f48e9000 ---p 00000000 00:00 0 
+7f61f48e9000-7f61f4ced000 rw-p 00000000 00:00 0 
+7f61f4ced000-7f61f4cee000 ---p 00000000 00:00 0 
+7f61f4cee000-7f61f4df4000 rw-p 00000000 00:00 0 
+7f61f4df4000-7f61f4eda000 ---p 00000000 00:00 0 
+7f61f4eda000-7f61f4edf000 rw-p 00000000 00:00 0 
+7f61f4edf000-7f61f4fc5000 ---p 00000000 00:00 0 
+7f61f4fc5000-7f61f4fd0000 r-xp 00000000 08:02 8268822                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f61f4fd0000-7f61f51cf000 ---p 0000b000 08:02 8268822                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f61f51cf000-7f61f51d0000 r--p 0000a000 08:02 8268822                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f61f51d0000-7f61f51d1000 rw-p 0000b000 08:02 8268822                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f61f51d1000-7f61f51d7000 rw-p 00000000 00:00 0 
+7f61f51d7000-7f61f51ee000 r-xp 00000000 08:02 8268819                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f61f51ee000-7f61f53ed000 ---p 00017000 08:02 8268819                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f61f53ed000-7f61f53ee000 r--p 00016000 08:02 8268819                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f61f53ee000-7f61f53ef000 rw-p 00017000 08:02 8268819                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f61f53ef000-7f61f53f1000 rw-p 00000000 00:00 0 
+7f61f53f1000-7f61f53fc000 r-xp 00000000 08:02 8268824                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f61f53fc000-7f61f55fb000 ---p 0000b000 08:02 8268824                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f61f55fb000-7f61f55fc000 r--p 0000a000 08:02 8268824                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f61f55fc000-7f61f55fd000 rw-p 0000b000 08:02 8268824                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f61f55fd000-7f61f5605000 r-xp 00000000 08:02 8268820                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f61f5605000-7f61f5805000 ---p 00008000 08:02 8268820                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f61f5805000-7f61f5806000 r--p 00008000 08:02 8268820                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f61f5806000-7f61f5807000 rw-p 00009000 08:02 8268820                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f61f5807000-7f61f580e000 r-xp 00000000 08:02 8268829                    /lib/x86_64-linux-gnu/librt-2.27.so
+7f61f580e000-7f61f5a0d000 ---p 00007000 08:02 8268829                    /lib/x86_64-linux-gnu/librt-2.27.so
+7f61f5a0d000-7f61f5a0e000 r--p 00006000 08:02 8268829                    /lib/x86_64-linux-gnu/librt-2.27.so
+7f61f5a0e000-7f61f5a0f000 rw-p 00007000 08:02 8268829                    /lib/x86_64-linux-gnu/librt-2.27.so
+7f61f5a0f000-7f61f5bac000 r-xp 00000000 08:02 8268816                    /lib/x86_64-linux-gnu/libm-2.27.so
+7f61f5bac000-7f61f5dab000 ---p 0019d000 08:02 8268816                    /lib/x86_64-linux-gnu/libm-2.27.so
+7f61f5dab000-7f61f5dac000 r--p 0019c000 08:02 8268816                    /lib/x86_64-linux-gnu/libm-2.27.so
+7f61f5dac000-7f61f5dad000 rw-p 0019d000 08:02 8268816                    /lib/x86_64-linux-gnu/libm-2.27.so
+7f61f5dad000-7f61f62c9000 r--p 00000000 08:02 7614503                    /home/qennedy/studio/android-studio/jbr/lib/server/libjvm.so
+7f61f62c9000-7f61f6d42000 r-xp 0051b000 08:02 7614503                    /home/qennedy/studio/android-studio/jbr/lib/server/libjvm.so
+7f61f6d42000-7f61f6e0a000 r--p 00f93000 08:02 7614503                    /home/qennedy/studio/android-studio/jbr/lib/server/libjvm.so
+7f61f6e0a000-7f61f6e41000 rw-p 0105a000 08:02 7614503                    /home/qennedy/studio/android-studio/jbr/lib/server/libjvm.so
+7f61f6e41000-7f61f6e98000 rw-p 00000000 00:00 0 
+7f61f6e98000-7f61f707f000 r-xp 00000000 08:02 8268812                    /lib/x86_64-linux-gnu/libc-2.27.so
+7f61f707f000-7f61f727f000 ---p 001e7000 08:02 8268812                    /lib/x86_64-linux-gnu/libc-2.27.so
+7f61f727f000-7f61f7283000 r--p 001e7000 08:02 8268812                    /lib/x86_64-linux-gnu/libc-2.27.so
+7f61f7283000-7f61f7285000 rw-p 001eb000 08:02 8268812                    /lib/x86_64-linux-gnu/libc-2.27.so
+7f61f7285000-7f61f7289000 rw-p 00000000 00:00 0 
+7f61f7289000-7f61f728c000 r-xp 00000000 08:02 8268815                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7f61f728c000-7f61f748b000 ---p 00003000 08:02 8268815                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7f61f748b000-7f61f748c000 r--p 00002000 08:02 8268815                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7f61f748c000-7f61f748d000 rw-p 00003000 08:02 8268815                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7f61f748d000-7f61f74a7000 r-xp 00000000 08:02 8268827                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f61f74a7000-7f61f76a6000 ---p 0001a000 08:02 8268827                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f61f76a6000-7f61f76a7000 r--p 00019000 08:02 8268827                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f61f76a7000-7f61f76a8000 rw-p 0001a000 08:02 8268827                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f61f76a8000-7f61f76ac000 rw-p 00000000 00:00 0 
+7f61f76ac000-7f61f76d5000 r-xp 00000000 08:02 8262522                    /lib/x86_64-linux-gnu/ld-2.27.so
+7f61f76dd000-7f61f7720000 rw-p 00000000 00:00 0 
+7f61f7720000-7f61f7727000 ---p 00000000 00:00 0 
+7f61f7727000-7f61f7730000 r--p 00000000 08:02 7614530                    /home/qennedy/studio/android-studio/jbr/lib/libzip.so
+7f61f7730000-7f61f7744000 r-xp 00008000 08:02 7614530                    /home/qennedy/studio/android-studio/jbr/lib/libzip.so
+7f61f7744000-7f61f7745000 r--p 0001b000 08:02 7614530                    /home/qennedy/studio/android-studio/jbr/lib/libzip.so
+7f61f7745000-7f61f7747000 rw-p 0001b000 08:02 7614530                    /home/qennedy/studio/android-studio/jbr/lib/libzip.so
+7f61f7747000-7f61f774f000 rw-s 00000000 08:02 7886325                    /tmp/hsperfdata_qennedy/6730
+7f61f774f000-7f61f775a000 r--p 00000000 08:02 7607940                    /home/qennedy/studio/android-studio/jbr/lib/libjimage.so
+7f61f775a000-7f61f776f000 r-xp 0000a000 08:02 7607940                    /home/qennedy/studio/android-studio/jbr/lib/libjimage.so
+7f61f776f000-7f61f7771000 r--p 0001e000 08:02 7607940                    /home/qennedy/studio/android-studio/jbr/lib/libjimage.so
+7f61f7771000-7f61f7772000 rw-p 0001f000 08:02 7607940                    /home/qennedy/studio/android-studio/jbr/lib/libjimage.so
+7f61f7772000-7f61f7784000 r--p 00000000 08:02 7614531                    /home/qennedy/studio/android-studio/jbr/lib/libjava.so
+7f61f7784000-7f61f7799000 r-xp 00011000 08:02 7614531                    /home/qennedy/studio/android-studio/jbr/lib/libjava.so
+7f61f7799000-7f61f779a000 r--p 00025000 08:02 7614531                    /home/qennedy/studio/android-studio/jbr/lib/libjava.so
+7f61f779a000-7f61f779c000 rw-p 00025000 08:02 7614531                    /home/qennedy/studio/android-studio/jbr/lib/libjava.so
+7f61f779c000-7f61f77a0000 ---p 00000000 00:00 0 
+7f61f77a0000-7f61f789f000 rw-p 00000000 00:00 0 
+7f61f789f000-7f61f78a7000 r--p 00000000 08:02 7607629                    /home/qennedy/studio/android-studio/jbr/lib/jli/libjli.so
+7f61f78a7000-7f61f78b6000 r-xp 00007000 08:02 7607629                    /home/qennedy/studio/android-studio/jbr/lib/jli/libjli.so
+7f61f78b6000-7f61f78b7000 r--p 00015000 08:02 7607629                    /home/qennedy/studio/android-studio/jbr/lib/jli/libjli.so
+7f61f78b7000-7f61f78b9000 rw-p 00015000 08:02 7607629                    /home/qennedy/studio/android-studio/jbr/lib/jli/libjli.so
+7f61f78b9000-7f61f78bb000 rw-p 00000000 00:00 0 
+7f61f78c1000-7f61f78c2000 ---p 00000000 00:00 0 
+7f61f78c2000-7f61f78c3000 r--p 00000000 00:00 0 
+7f61f78c3000-7f61f78c9000 r--p 00000000 08:02 7614529                    /home/qennedy/studio/android-studio/jbr/lib/libverify.so
+7f61f78c9000-7f61f78d2000 r-xp 00005000 08:02 7614529                    /home/qennedy/studio/android-studio/jbr/lib/libverify.so
+7f61f78d2000-7f61f78d4000 r--p 0000d000 08:02 7614529                    /home/qennedy/studio/android-studio/jbr/lib/libverify.so
+7f61f78d4000-7f61f78d5000 rw-p 0000e000 08:02 7614529                    /home/qennedy/studio/android-studio/jbr/lib/libverify.so
+7f61f78d5000-7f61f78d6000 r--p 00029000 08:02 8262522                    /lib/x86_64-linux-gnu/ld-2.27.so
+7f61f78d6000-7f61f78d7000 rw-p 0002a000 08:02 8262522                    /lib/x86_64-linux-gnu/ld-2.27.so
+7f61f78d7000-7f61f78d8000 rw-p 00000000 00:00 0 
+7ffe1cdb2000-7ffe1cdd3000 rw-p 00000000 00:00 0                          [stack]
+7ffe1cdea000-7ffe1cded000 r--p 00000000 00:00 0                          [vvar]
+7ffe1cded000-7ffe1cdee000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+
+VM Arguments:
+java_command: org.jetbrains.kotlin.cli.jvm.K2JVMCompiler @/home/qennedy/HarryPotterApp/app/build/20230405_1393568616903330038.compiler.options
+java_class_path (initial): /home/qennedy/studio/android-studio/plugins/gradle/lib/gradle-5.2.1/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/1.8.0/eb9118d4bcceaa2a94b2ae2a33a4ddba7c9a947f/kotlin-compiler-embeddable-1.8.0.jar:/home/qennedy/studio/android-studio/plugins/gradle/lib/gradle-5.2.1/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.8.0/1796921c7a3e2e2665a83e6c8d33399336cd39bc/kotlin-stdlib-1.8.0.jar:/home/qennedy/studio/android-studio/plugins/gradle/lib/gradle-5.2.1/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/1.8.0/b2f7e760d283cb339974851c222a4c1d48f2d3d/kotlin-script-runtime-1.8.0.jar:/home/qennedy/studio/android-studio/plugins/gradle/lib/gradle-5.2.1/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.6.10/1cbe9c92c12a94eea200d23c2bbaedaf3daf5132/kotlin-reflect-1.6.10.jar:/home/qennedy/studio/android-studio/plugins/gradle/lib/gradle-5.2.1/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-daemon-embeddable/1.8.0/d255216c551685dc3a7e852b53617f5f01aaaa5c/kotlin-daemon-embeddable-1.8.0.jar:/home/qennedy/studio/android-studio/plugins/gradle/lib/gradle-5.2.1/caches/modules-2/files-2.1/org.jetbrains.intellij.deps/trove4j/1.0.20200330/3afb14d5f9ceb459d724e907a21145e8ff394f02/trove4j-1.0.20200330.jar:/home/qennedy/studio/android-studio/plugins/gradle/lib/gradle-5.2.1/caches/modules-2/files-2.1/net.java.dev.jna/jna/5.6.0/330f2244e9030119ab3030fc3fededc86713d9cc/jna-5.6.0.jar:/home/qennedy/studio/android-studio/plugins/gradle/lib/gradle-5.2.1/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.8.0/f7197e7cc76453ac59f8b0f8d5137cc600becd36/kotlin-stdlib-common-1.8.0.jar:/home/qennedy/studio/android-studio/plugins/gradle/lib/gradle-5.2.1/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 3                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 1                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 4                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 121634816                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 1935671296                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5830732                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122913754                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122913754                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     bool UseCompressedClassPointers               = true                                 {lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                                 {lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+SHELL=/bin/bash
+DISPLAY=:0
+LANG=en_US.UTF-8
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xf183e0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xf183e0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0xf183e0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0xd663e0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0xd663e0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0xf183e0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR2: [libjvm.so+0xd66ac0], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGINT: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGTERM: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGQUIT: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=LinuxMint
+DISTRIB_RELEASE=19.3
+DISTRIB_CODENAME=tricia
+DISTRIB_DESCRIPTION="Linux Mint 19.3 Tricia"
+uname:Linux 5.0.0-32-generic #34~18.04.2-Ubuntu SMP Thu Oct 10 10:36:02 UTC 2019 x86_64
+OS uptime: 0 days 0:37 hours
+libc:glibc 2.27 NPTL 2.27 
+rlimit (soft/hard): STACK 8192k/infinity , CORE 0k/infinity , NPROC 29247/29247 , NOFILE 1048576/1048576 , AS infinity/infinity , CPU infinity/infinity , DATA infinity/infinity , FSIZE infinity/infinity , MEMLOCK 16384k/16384k
+load average:4.44 4.94 4.00
+
+/proc/meminfo:
+MemTotal:        7558248 kB
+MemFree:          121872 kB
+MemAvailable:      44860 kB
+Buffers:           11368 kB
+Cached:           410696 kB
+SwapCached:         3616 kB
+Active:          6197468 kB
+Inactive:         917528 kB
+Active(anon):    6170020 kB
+Inactive(anon):   886248 kB
+Active(file):      27448 kB
+Inactive(file):    31280 kB
+Unevictable:        8908 kB
+Mlocked:              64 kB
+SwapTotal:       2097148 kB
+SwapFree:              0 kB
+Dirty:                88 kB
+Writeback:            32 kB
+AnonPages:       6699032 kB
+Mapped:           244232 kB
+Shmem:            362568 kB
+KReclaimable:      59440 kB
+Slab:             130860 kB
+SReclaimable:      59440 kB
+SUnreclaim:        71420 kB
+KernelStack:       21088 kB
+PageTables:        90844 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     5876272 kB
+Committed_AS:   16752168 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+Percpu:             1232 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+DirectMap4k:      232432 kB
+DirectMap2M:     5445632 kB
+DirectMap1G:     2097152 kB
+
+/sys/kernel/mm/transparent_hugepage/enabled:
+always [madvise] never
+/sys/kernel/mm/transparent_hugepage/defrag (defrag/compaction efforts parameter):
+always defer defer+madvise [madvise] never
+
+Process Memory:
+Virtual Size: 2501932K (peak: 2645752K)
+Resident Set Size: 18104K (peak: 18104K) (anon: 5544K, file: 12560K, shmem: 0K)
+Swapped out: 0K
+C-Heap outstanding allocations: 669K
+
+/proc/sys/kernel/threads-max (system-wide limit on the number of threads):
+58495
+/proc/sys/vm/max_map_count (maximum number of memory map areas a process may have):
+65530
+/proc/sys/kernel/pid_max (system-wide limit on number of process identifiers):
+32768
+
+container (cgroup) information:
+container_type: cgroupv1
+cpu_cpuset_cpus: 0-3
+cpu_memory_nodes: 0
+active_processor_count: 4
+cpu_quota: -1
+cpu_period: 100000
+cpu_shares: -1
+memory_limit_in_bytes: -1
+memory_and_swap_limit_in_bytes: -2
+memory_soft_limit_in_bytes: -1
+memory_usage_in_bytes: 7293796352
+memory_max_usage_in_bytes: 11112448
+
+Steal ticks since vm start: 0
+Steal ticks percentage since vm start:  0.000
+
+CPU:total 4 (initial active 4) (2 cores per cpu, 2 threads per core) family 6 model 78 stepping 3 microcode 0x94, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, rtm, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx, fma
+CPU Model and flags from /proc/cpuinfo:
+model name	: Intel(R) Core(TM) i7-6600U CPU @ 2.60GHz
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single pti tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+Online cpus:
+0-3
+Offline cpus:
+
+BIOS frequency limitation:
+<Not Available>
+Frequency switch latency (ns):
+0
+Available cpu frequencies:
+<Not Available>
+Current governor:
+powersave
+Core performance/turbo boost:
+<Not Available>
+
+Memory: 4k page, physical 7558248k(122880k free), swap 2097148k(0k free)
+
+vm_info: OpenJDK 64-Bit Server VM (11.0.15+0-b2043.56-8887301) for linux-amd64 JRE (11.0.15+0-b2043.56-8887301), built on Jul 29 2022 22:12:21 by "androidbuild" with gcc Android (7284624, based on r416183b) Clang 12.0.5 (https://android.googlesource.com/toolchain/llvm-project c935d99d7cf2016289302412d708641d52d2f7ee)
+
+END.
