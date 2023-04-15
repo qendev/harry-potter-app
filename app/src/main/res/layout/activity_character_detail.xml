@@ -4,6 +4,136 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.CharacterDetailActivity">
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginRight="8dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/characterCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:cardPreventCornerOverlap="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorGray"
+            android:paddingBottom="8dp"
+            >
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageViewCharacter"
+                android:layout_width="112dp"
+                android:layout_height="112dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:background="@tools:sample/backgrounds/scenic" />
+
+            <TextView
+                android:id="@+id/textViewName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/imageViewCharacter"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:text="Name:"/>
+
+
+            <TextView
+                android:id="@+id/textViewHouse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/textViewName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:text="House:"/>
+
+<!--            <TextView-->
+<!--                android:id="@+id/textViewWand"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/textViewHouse"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="12sp"-->
+<!--                android:text="Wand:"/>-->
+
+
+
+<!--            <TextView-->
+<!--                android:id="@+id/textViewWandWood"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:layout_constraintStart_toEndOf="@id/textViewWand"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/textViewHouse"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="12sp"-->
+<!--                android:text="Wood,"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/textViewWandCore"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:layout_constraintStart_toEndOf="@id/textViewWandWood"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/textViewHouse"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="12sp"-->
+<!--                android:text="Core,"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/textViewWandLength"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:layout_constraintStart_toEndOf="@id/textViewWandCore"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/textViewHouse"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="12sp"-->
+<!--                android:text="Length"/>-->
+
+            <TextView
+                android:id="@+id/textViewYearOfBirth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/textViewHouse"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp"
+                android:text="Year of Birth:"
+                android:textColor="@color/black"
+                android:textSize="16sp"/>
+
+
+
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

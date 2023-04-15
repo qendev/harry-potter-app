@@ -1,5 +1,7 @@
 package com.example.harrypotterapp.activity
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -23,6 +25,8 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity(), android.widget.SearchView.OnQueryTextListener {
 
 
+
+
     private lateinit var binding: ActivityMainBinding
     private val charactersViewModel: CharactersViewModel by viewModels()
 
@@ -32,6 +36,7 @@ class MainActivity : AppCompatActivity(), android.widget.SearchView.OnQueryTextL
 //    lateinit var characterList: ArrayList<CharactersItem>
 
     lateinit var characterList:ArrayList<CharactersItem>
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,10 +58,18 @@ class MainActivity : AppCompatActivity(), android.widget.SearchView.OnQueryTextL
         charactersAdapter.setItemClick(object : CharactersAdapter.ClickInterface<CharactersItem> {
             override fun onClick(data: CharactersItem) {
 
+
+
                 Toast.makeText(this@MainActivity, data.name, Toast.LENGTH_SHORT).show()
+
+
+
+
+
             }
 
         })
+
 
 
         charactersViewModel.characterResponse.observe(this) {
@@ -90,6 +103,11 @@ class MainActivity : AppCompatActivity(), android.widget.SearchView.OnQueryTextL
         charactersAdapter.notifyDataSetChanged()
 
     }
+
+    companion object{
+        val NEXT_SCREEN="details_screen"
+    }
+
 
 
     override fun onQueryTextSubmit(query: String?): Boolean {

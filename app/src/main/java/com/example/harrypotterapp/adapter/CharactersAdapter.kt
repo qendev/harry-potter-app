@@ -1,16 +1,20 @@
 package com.example.harrypotterapp.adapter
 
+import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.harrypotterapp.activity.CharacterDetailActivity
 import com.example.harrypotterapp.data.CharactersItem
 import com.example.harrypotterapp.databinding.CharacterItemBinding
 import java.util.*
-import javax.inject.Inject
 import kotlin.collections.ArrayList
 
 class CharactersAdapter(private var characters:ArrayList<CharactersItem>) : RecyclerView.Adapter<CharactersAdapter.CharactersViewHolder>(),
@@ -20,6 +24,9 @@ class CharactersAdapter(private var characters:ArrayList<CharactersItem>) : Recy
     private var clickInterface: ClickInterface<CharactersItem>? = null
 
     var characterListFiltered:ArrayList<CharactersItem> = ArrayList()
+    //decalred the contect
+     private lateinit var context: Context
+
 
     init {
         characterListFiltered = characters
@@ -38,6 +45,10 @@ class CharactersAdapter(private var characters:ArrayList<CharactersItem>) : Recy
     ): CharactersAdapter.CharactersViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = CharacterItemBinding.inflate(inflater, parent, false)
+
+        //initialized the context
+        context = parent.context
+
         return CharactersViewHolder(binding)
 
 
@@ -58,6 +69,21 @@ class CharactersAdapter(private var characters:ArrayList<CharactersItem>) : Recy
 
         holder.view.characterCard.setOnClickListener {
             clickInterface?.onClick(character)
+
+            val model = characterListFiltered.get(position)
+            var dName:String = model.name
+            var dHouse:String = model.house
+            var dYOB:String = model.yearOfBirth.toString()
+            var dImage:String = model.image
+
+
+
+            val intent = Intent(context,CharacterDetailActivity::class.java)
+            intent.putExtra("DetailName",dName)
+            intent.putExtra("DetailHouse",dHouse)
+            intent.putExtra("DetailYOB",dYOB)
+            intent.putExtra("DetailImage",dImage)
+            context.startActivity(intent)
         }
 
     }
@@ -75,7 +101,28 @@ class CharactersAdapter(private var characters:ArrayList<CharactersItem>) : Recy
     }
 
 
-    class CharactersViewHolder(val view: CharacterItemBinding) : RecyclerView.ViewHolder(view.root)
+    class CharactersViewHolder(val view: CharacterItemBinding) : RecyclerView.ViewHolder(view.root) {
+        private val textViewName: TextView = view.textViewName
+        private val textViewHouse: TextView = view.textViewHouse
+        private val textViewYearOfBirth: TextView = view.textViewYearOfBirth
+        private val textViewWandWood: TextView = view.textViewWandWood
+        private val textViewWandCore: TextView = view.textViewWandCore
+        private val textViewWandLength: TextView = view.textViewWandLength
+        private val imageViewCharacter: ImageView = view.imageViewCharacter
+
+//        fun bind(character: Character) {
+//            textViewName.text =character.toString()
+//            textViewHouse.text = character.toString()
+//            textViewWandWood.text =textViewWandWood.toString()
+//            textViewWandCore.text = character.toString()
+//            textViewWandLength.text = character.toString()
+//            textViewYearOfBirth.text = character.toString()
+//            imageViewCharacter.setImageResource(0).toString()
+//
+//
+//
+//        }
+    }
 
 
 
