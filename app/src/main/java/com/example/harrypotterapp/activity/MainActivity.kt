@@ -102,64 +102,10 @@ class MainActivity : AppCompatActivity(), android.widget.SearchView.OnQueryTextL
         return false
     }
 
-    // calling on create option menu
-    // layout to inflate our menu file.
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        // below line is to get our inflater
-//        val inflater = menuInflater
-//
-//        // inside inflater we are inflating our menu file.
-//        inflater.inflate(R.menu.search_menu, menu)
-//
-//        // below line is to get our menu item.
-//        val searchItem: MenuItem = menu.findItem(R.id.actionSearch)
-//
-//        // getting search view of our item.
-//        val searchView: SearchView = searchItem.actionView as SearchView
-//
-//        // below line is to call set on query text listener method.
-//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
-//            android.widget.SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(p0: String?): Boolean {
-//                return false
-//            }
-//
-//            override fun onQueryTextChange(msg: String): Boolean {
-//                // inside on query text change method we are
-//                // calling a method to filter our recycler view.
-//                filterCharacters(msg)
-//                return false
-//            }
-//        })
-//        return true
-//    }
 
 
-//    private fun filterCharacters(text: String) {
-//        // creating a new array list to filter our data.
-//        val filteredCharacterList: ArrayList<CharactersItem> = ArrayList()
-//
-//        // running a for loop to compare elements.
-//        for (character in characterList) {
-//            // checking if the entered string matched with any item of our recycler view.
-//            if (character.name.toLowerCase().contains(text.toLowerCase())) {
-//                // if the item is matched we are
-//                // adding it to our filtered list.
-//                filteredCharacterList.add(character)
-//            }
-//        }
-//        if (filteredCharacterList.isEmpty()){
-//            // if no item is added in filtered list we are
-//            // displaying a toast message as no data found.
-//            Toast.makeText(this, "No Such Character was found...", Toast.LENGTH_SHORT).show()
-//        }
-//        else{
-//            // at last we are passing that filtered
-//            // list to our adapter class.
-//            charactersAdapter.filterList(filteredCharacterList)
-//        }
-//
-//    }
+
+
 
 
 
