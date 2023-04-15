@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity(), android.widget.SearchView.OnQueryTextL
 
         characterList = ArrayList()
 
-        // on below line we are initializing our adapter
+        //initializing the adapter
         charactersAdapter = CharactersAdapter(characterList)
 
 
@@ -55,23 +55,18 @@ class MainActivity : AppCompatActivity(), android.widget.SearchView.OnQueryTextL
         binding.recyclerViewCharacters.adapter = charactersAdapter
 
 
+        //implemented the onClick on the recyclerview item which displays the name of the character as a toast.
         charactersAdapter.setItemClick(object : CharactersAdapter.ClickInterface<CharactersItem> {
             override fun onClick(data: CharactersItem) {
 
-
-
                 Toast.makeText(this@MainActivity, data.name, Toast.LENGTH_SHORT).show()
-
-
-
-
 
             }
 
         })
 
 
-
+        //observed the resposnce from the viewmodel using the different states of the network responses as drawnn from the network reult sealed class.
         charactersViewModel.characterResponse.observe(this) {
             when (it) {
                 is NetworkResult.Loading -> {
@@ -104,11 +99,8 @@ class MainActivity : AppCompatActivity(), android.widget.SearchView.OnQueryTextL
 
     }
 
-    companion object{
-        val NEXT_SCREEN="details_screen"
-    }
 
-
+    //for filtering recyclerview items implementation using the searchView
 
     override fun onQueryTextSubmit(query: String?): Boolean {
 //        charactersAdapter.filter.filter(query)

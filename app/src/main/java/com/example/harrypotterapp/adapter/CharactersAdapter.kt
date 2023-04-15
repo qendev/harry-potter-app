@@ -53,7 +53,7 @@ class CharactersAdapter(private var characters:ArrayList<CharactersItem>) : Recy
 
 
     }
-
+    //here i have binded the views and implemented the onclick listener that navigates data to another activity
     override fun onBindViewHolder(holder: CharactersAdapter.CharactersViewHolder, position: Int) {
         val character = characterListFiltered[position]
         holder.view.textViewName.text = "Name:${character.name}"
