@@ -1,12 +1,10 @@
 package com.example.harrypotterapp.adapter
 
-import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.harrypotterapp.data.CharactersItem
@@ -15,18 +13,23 @@ import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
-class CharactersAdapter @Inject constructor() : RecyclerView.Adapter<CharactersAdapter.CharactersViewHolder>(), Filterable {
+class CharactersAdapter(private var characters:ArrayList<CharactersItem>) : RecyclerView.Adapter<CharactersAdapter.CharactersViewHolder>(),
+    Filterable {
 
 
-    var characters = mutableListOf<CharactersItem>()
     private var clickInterface: ClickInterface<CharactersItem>? = null
 
+    var characterListFiltered:ArrayList<CharactersItem> = ArrayList()
+
+    init {
+        characterListFiltered = characters
+    }
+
     fun updateCharactersList(harryPotterCharacters: ArrayList<CharactersItem>) {
-        this.characters = harryPotterCharacters.toMutableList()
+        this.characterListFiltered = harryPotterCharacters.toMutableList() as ArrayList<CharactersItem>
         notifyItemRangeInserted(0, harryPotterCharacters.size)
     }
 
-    private var filteredCharacterList: List<CharactersItem> = characters
 
 
     override fun onCreateViewHolder(
@@ -41,7 +44,7 @@ class CharactersAdapter @Inject constructor() : RecyclerView.Adapter<CharactersA
     }
 
     override fun onBindViewHolder(holder: CharactersAdapter.CharactersViewHolder, position: Int) {
-        val character = characters[position]
+        val character = characterListFiltered[position]
         holder.view.textViewName.text = "Name:${character.name}"
         holder.view.textViewYearOfBirth.text = "Year Of Birth:${character.yearOfBirth}"
         holder.view.textViewHouse.text = "House:${character.house}"
@@ -60,7 +63,7 @@ class CharactersAdapter @Inject constructor() : RecyclerView.Adapter<CharactersA
     }
 
     override fun getItemCount(): Int {
-        return characters.size
+        return characterListFiltered.size
     }
 
     fun setItemClick(clickInterface: ClickInterface<CharactersItem>) {
@@ -72,52 +75,54 @@ class CharactersAdapter @Inject constructor() : RecyclerView.Adapter<CharactersA
     }
 
 
-    class CharactersViewHolder(val view: CharacterItemBinding) : RecyclerView.ViewHolder(view.root){
-//        private  val textViewName:TextView =view.textViewName
-//        private val textViewHouse:TextView = view.textViewHouse
-//        private val textViewYearOfBirth:TextView = view.textViewYearOfBirth
-//        private val textViewWandWood:TextView = view.textViewWandWood
-//        private val textViewWandCore:TextView = view.textViewWandCore
-//        private val textViewWandLength:TextView = view.textViewWandLength
-//        private val imageViewCharacter:ImageView = view.imageViewCharacter
-
-//        fun bind(character: Character) {
-//            textViewName.text =character.toString()
-//            textViewHouse.text = character.toString()
-//            textViewWandWood.text =textViewWandWood.toString()
-//            textViewWandCore.text = character.toString()
-//            textViewWandLength.text = character.toString()
-//            textViewYearOfBirth.text = character.toString()
-//            imageViewCharacter.setImageResource(0).toString()
-//
-//
-//
-//        }
+    class CharactersViewHolder(val view: CharacterItemBinding) : RecyclerView.ViewHolder(view.root)
 
 
-    }
 
-    //for implementing search functionality
+        //implementing filtering of items in the recyclerview
     override fun getFilter(): Filter {
-        return object : Filter() {
+        return object :Filter(){
             override fun performFiltering(constraint: CharSequence?): FilterResults {
-                val filteredList = if (constraint.isNullOrEmpty()) {
-                    characters
-                } else {
-                    characters.filter { it.name.contains(constraint, true) }
+                val charSearch = constraint.toString()
+                if (charSearch.isEmpty()){
+                    characterListFiltered = characters
                 }
-                val results = FilterResults()
-                results.values = filteredList
-                return results
+                else{
+                    val resultList = ArrayList<CharactersItem>()
+                    for (charac in characterListFiltered){
+                        if (charac.name.lowercase(Locale.ROOT)
+                                .contains(charSearch.lowercase(Locale.ROOT))){
+                            resultList.add(charac)
+                        }
+
+                    }
+
+                    characterListFiltered = resultList
+                }
+                val filterResults = FilterResults()
+                filterResults.values =characterListFiltered
+                return filterResults
+
+
+
             }
 
-            @SuppressLint("NotifyDataSetChanged")
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                filteredCharacterList = results?.values as? List<CharactersItem> ?: emptyList()
+                characterListFiltered = results?.values as ArrayList<CharactersItem>
                 notifyDataSetChanged()
+
+
+
+
+
+
             }
+
         }
     }
+
+
+
 }
 
 
